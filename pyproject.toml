@@ -6,13 +6,11 @@ description = "A package designed to help with scraping post data from imageboar
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "beautifulsoup4>=4.13.4",
-    "dataclasses>=0.8",
     "datetime>=5.5",
     "logging>=0.4.9.6",
     "pytest>=8.4.1",
     "pytest-mock>=3.14.1",
-    "requests>=2.32.4",
+    "scrapy>=2.13.3",
 ]
 
 [tool.pytest.ini_options]

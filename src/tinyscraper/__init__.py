@@ -1,1 +1,1 @@
-from models import Post, Thread
+from tinyscraper.items import PostItem, ThreadItem
