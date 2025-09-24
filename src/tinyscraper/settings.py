@@ -1,0 +1,1 @@
+SPIDER_MODULES = ["tinyscraper.spiders"]
