@@ -1,8 +1,7 @@
-<picture>
-    <source media="(prefers-color-scheme:dark)" srcset="assets/Tinyscraper_logo_new_whitetxt.svg">
-    <source media="(prefers-color-scheme:light)" srcset="assets/Tinyscraper_logo_new_blacktxt.svg">
-    <img alt="Tinyboard logo" src="assets/Tinyscraper_logo_new_whitebg.png">
-</picture>
+<p align="center">
+  <img alt="Tinyboard logo" src="assets/Tinyscraper_logo_new_blacktxt.svg#gh-light-mode-only"/>
+  <img alt="Tinyboard logo" src="assets/Tinyscraper_logo_new_whitetxt.svg#gh-dark-mode-only"/>
+</p>
 
 ![GitHub License](https://img.shields.io/github/license/wkuratana/tinyscraper) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/tinyscraper) ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/wkuratana/tinyscraper)
 
