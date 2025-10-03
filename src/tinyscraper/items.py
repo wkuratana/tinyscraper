@@ -1,19 +1,19 @@
 # Imports
-import scrapy
+from scrapy.item import Item, Field
 
-class PostItem(scrapy.Item):
+class PostItem(Item):
     """Represents a single post in a thread."""
-    author = scrapy.Field()
-    content = scrapy.Field()
-    image_url = scrapy.Field()
-    is_op = scrapy.Field()
-    linked_to_ids = scrapy.Field()
-    post_id = scrapy.Field()
-    timestamp = scrapy.Field()
+    author = Field()
+    content = Field()
+    image_url = Field(default=None)
+    is_op = Field()
+    linked_to_ids = Field()
+    post_id = Field()
+    timestamp = Field()
 
-class ThreadItem(scrapy.Item):
+class ThreadItem(Item):
     """Represents an entire thread, of multiple posts."""
-    board = scrapy.Field()
-    posts = scrapy.Field()
-    thread_id = scrapy.Field()
-    title = scrapy.Field()
+    board = Field()
+    posts = Field()
+    thread_id = Field()
+    title = Field()
