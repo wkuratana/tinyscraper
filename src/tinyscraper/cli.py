@@ -1,7 +1,8 @@
 # Imports
 import typer
 from typing_extensions import Annotated
-from .api import FileExtension, scrape_thread_to_json
+from .api import scrape_from_url
+from .types import FileExtension
 
 
 app = typer.Typer()
@@ -13,29 +14,33 @@ def scrape(
     )], 
     filename: Annotated[str|None, typer.Option(
         '--filename', 
-        '-n',
+        '-fn',
         help="Output filename, not including type extension.")
     ] = None,
-    filename_suffix: Annotated[str|None, typer.Option(
+    filename_suffix: Annotated[str, typer.Option(
         '--filename_suffix', 
-        '-s',
+        '-fns',
         help="Suffix for ouput filename. Not the filename extension.")
     ] = 'tinyboard',
     filename_extension: Annotated[FileExtension, typer.Option(
         '--filename_extension', 
-        '-e',
+        '-fne',
         help="Output filename extension. E.g. 'json', 'csv'.")
     ] = FileExtension.json,
     directory: Annotated[str, typer.Option(
         '--directory',
         '-d',
         help="Where output files will be written. Default is local data/.")
-    ] = "data"
+    ] = 'data'
     # TODO: Add arguments for Scrapy args/adjustments
 ):
-    # TODO: Change once api file is updated
-
-    scrape_thread_to_json(url, site_name=filename_suffix)
+    scrape_from_url(
+        url, 
+        filename, 
+        filename_suffix, 
+        filename_extension, 
+        directory
+    )
         
 
 if __name__ == '__main__':
