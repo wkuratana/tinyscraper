@@ -8,7 +8,6 @@ from .spiders.tinyboard import TinyboardSpider
 
 
 class FileExtension(str, Enum):
-    """What """
     json = 'json'
     jsonl = 'jsonl'
     csv = 'csv'
@@ -16,9 +15,9 @@ class FileExtension(str, Enum):
 
 # TODO: Optimize code reuse, add logging
 def scrape_thread_to_json(url: str, site_name = None):
-    """Scrape a thread URL and write out to a JSON file.
-    
-    The file is locally written to a /data directory.
+    """
+    Scrape a thread URL and write out to a JSON file.
+    The file is locally written to a `/data` directory.
 
     Args:
         url (str): URL to a thread page.

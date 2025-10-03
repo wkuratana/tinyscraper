@@ -12,28 +12,29 @@ def scrape(
         help="Homepage, catalog, or thread URL."
     )], 
     filename: Annotated[str|None, typer.Option(
-        help="Output filename, not including type extension."), 
         '--filename', 
-        '-fn'
+        '-n',
+        help="Output filename, not including type extension.")
     ] = None,
     filename_suffix: Annotated[str|None, typer.Option(
-        help="Suffix for ouput filename. Not the filename extension."), 
         '--filename_suffix', 
-        '-fns'
-    ] = None,
+        '-s',
+        help="Suffix for ouput filename. Not the filename extension.")
+    ] = 'tinyboard',
     filename_extension: Annotated[FileExtension, typer.Option(
-        help="Output filename extension. E.g. 'json', 'csv'."), 
         '--filename_extension', 
-        '-fne'
+        '-e',
+        help="Output filename extension. E.g. 'json', 'csv'.")
     ] = FileExtension.json,
-    directory: Annotated[str|None, typer.Option(
-        help="Directory where output files will be written."),
+    directory: Annotated[str, typer.Option(
         '--directory',
-        '-d'
-    ] = None
+        '-d',
+        help="Where output files will be written. Default is local data/.")
+    ] = "data"
     # TODO: Add arguments for Scrapy args/adjustments
 ):
     # TODO: Change once api file is updated
+
     scrape_thread_to_json(url, site_name=filename_suffix)
         
 

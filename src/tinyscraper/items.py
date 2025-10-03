@@ -1,6 +1,7 @@
 # Imports
 from scrapy.item import Item, Field
 
+
 class PostItem(Item):
     """Represents a single post in a thread."""
     author = Field()
