@@ -2,9 +2,17 @@
 import datetime
 import logging
 import os
+from enum import Enum
 from scrapy.crawler import CrawlerProcess
 from .spiders.tinyboard import TinyboardSpider
 
+
+class FileExtension(str, Enum):
+    """What """
+    json = 'json'
+    jsonl = 'jsonl'
+    csv = 'csv'
+    xml = 'xml'
 
 # TODO: Optimize code reuse, add logging
 def scrape_thread_to_json(url: str, site_name = None):

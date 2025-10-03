@@ -11,6 +11,7 @@ dependencies = [
     "pytest>=8.4.1",
     "pytest-mock>=3.14.1",
     "scrapy>=2.13.3",
+    "typer>=0.19.2",
 ]
 
 [tool.pytest.ini_options]
@@ -20,4 +21,4 @@ testpaths = [
 ]
 
 [project.scripts]
-tinyscraper = "tinyscraper.cli:main"
+tinyscraper = "tinyscraper.cli:app"
