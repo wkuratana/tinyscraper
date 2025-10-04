@@ -5,6 +5,8 @@ from .spiders.tinyboard import TinyboardSpider
 
 
 class PerItemFilePipeline:
+    """Pipeline to write each thread to a file, with variable file types."""
+
     # Map extensions to Scrapy Exporter classes
     EXPORTER_MAPPING = {
         'json': JsonItemExporter,
@@ -19,27 +21,32 @@ class PerItemFilePipeline:
     }
 
     def open_spider(self, spider: TinyboardSpider):
-        os.makedirs(spider.directory, exist_ok=True)
+        self.dir_path = os.path.join(
+            spider.directory,
+            spider.scrape_time.strftime('%Y%m%dT%H%M'),
+        )
+        os.makedirs(self.dir_path, exist_ok=True)
 
     def process_item(self, item, spider: TinyboardSpider):
+        """Write out each ThreadItem into its own file."""
         # Each item should be a ThreadItem
 
         ext = spider.filename_extension.value
         exporter_class = self.EXPORTER_MAPPING.get(ext)
 
-        # If the extension is not supported, do nothing and pass the item along.
         if not exporter_class:
-            return item
+            raise Exception(
+                "Error: Extension not supported"
+            )
 
         if spider.filename is not None:
             filepath = os.path.join(
-                spider.directory,
+                self.dir_path,
                 f"{spider.filename}.{ext}"
             )
         else:
             filepath = os.path.join(
-                spider.directory,
-                f"{spider.scrape_time.strftime('%Y%m%dT%H%M')}_"
+                self.dir_path,
                 f"thread_{item['thread_id'][0]}_"
                 f"{spider.filename_suffix}.{ext}"
             )

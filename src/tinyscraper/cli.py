@@ -32,7 +32,6 @@ def scrape(
         '-d',
         help="Where output files will be written. Default is local data/.")
     ] = 'data'
-    # TODO: Add arguments for Scrapy args/adjustments
 ):
     scrape_from_url(
         url, 

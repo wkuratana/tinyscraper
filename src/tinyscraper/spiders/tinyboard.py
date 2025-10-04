@@ -42,7 +42,8 @@ class TinyboardSpider(scrapy.Spider):
         else:
             if self.filename is None:
                 try:
-                    # On an homepage/catalog, find all thread links and crawl them
+                    # On an homepage/catalog, find all thread links 
+                    # and crawl them
                     thread_links = response.css(
                         'a[href*="/res/"]::attr(href)'
                     ).getall()
@@ -51,7 +52,8 @@ class TinyboardSpider(scrapy.Spider):
                     )
                 except Exception as e:
                     logging.error(
-                        f"Error when scraping expected homepage or catalog: {e}"
+                        "Error when scraping expected homepage"
+                        f" or catalog: {e}"
                     )
             else:
                 # You cannot have a custom filename for every file
