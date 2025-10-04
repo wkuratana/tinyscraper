@@ -1,9 +1,10 @@
 <p align="center">
-  <img alt="Tinyboard logo" src="assets/Tinyscraper_logo_new_blacktxt.svg#gh-light-mode-only"/>
-  <img alt="Tinyboard logo" src="assets/Tinyscraper_logo_new_whitetxt.svg#gh-dark-mode-only"/>
+  <img alt="Tinyboard logo" src="https://raw.githubusercontent.com/wkuratana/tinyscraper/refs/heads/develop/assets/Tinyscraper_logo_new_blacktxt.svg#gh-light-mode-only"/>
+  <img alt="Tinyboard logo" src="https://raw.githubusercontent.com/wkuratana/tinyscraper/refs/heads/main/assets/Tinyscraper_logo_new_whitetxt.svg#gh-dark-mode-only"/>
 </p>
 
-![GitHub License](https://img.shields.io/github/license/wkuratana/tinyscraper) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/tinyscraper) ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/wkuratana/tinyscraper)
+
+![GitHub License](https://img.shields.io/github/license/wkuratana/tinyscraper) ![PyPI](https://img.shields.io/pypi/v/tinyscraper?label=pypi%20package) ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/wkuratana/tinyscraper)
 
 <h1 align="left">What is Tinyscraper?</h1>
 
