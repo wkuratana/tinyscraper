@@ -107,7 +107,11 @@ tinyscraper -fns testchan -fne jsonl -d test_data <url>
 
 The command above visits the URL, then scrapes the thread data into a `test_data/` folder. The output file is named `thread_<thread_id>_testchan.jsonl`
 
+<h2 align="left">API</h2>
 
+Tinyscraper is designed to be used through both its CLI and its API. You can also install and use Tinyscraper as a dependency for other projects. Please reference the docstrings in `api.py` if you would like to use Tinyscraper without its CLI.
+
+Tinyscraper is built leveraging Scrapy. It can be easily modified if you find that it would better suit your use case with different functionality.
 
 <h1 align="left">Contributing</h1>
 
