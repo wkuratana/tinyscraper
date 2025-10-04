@@ -1,7 +1,9 @@
 # Imports
+import datetime
 import logging
 import scrapy
 from scrapy.loader import ItemLoader
+from ..types import FileExtension
 from ..items import PostItem, ThreadItem
 
 
@@ -11,6 +13,22 @@ class TinyboardSpider(scrapy.Spider):
     Can be started on an homepage, catalog page, or a specific thread URL.
     """
     name = 'tinyboard'
+
+    def __init__(
+        self, 
+        filename: str|None,
+        filename_suffix: str,
+        filename_extension: FileExtension, 
+        directory: str, 
+        *args, 
+        **kwargs
+    ):
+        super().__init__(*args, **kwargs)
+        self.scrape_time = datetime.datetime.now()
+        self.filename = filename
+        self.filename_suffix = filename_suffix
+        self.filename_extension = filename_extension
+        self.directory = directory
 
     def parse(self, response):
         """
@@ -22,17 +40,26 @@ class TinyboardSpider(scrapy.Spider):
         if is_thread_page:
             yield from self._parse_thread_page(response)
         else:
-            try:
-                # On an homepage/catalog, find all thread links and crawl them
-                thread_links = response.css(
-                    'a[href*="/res/"]::attr(href)'
-                ).getall()
-                yield from response.follow_all(
-                    thread_links, callback=self._parse_thread_page
-                )
-            except Exception as e:
-                logging.error(
-                    f"Error when scraping expected homepage or catalog: {e}"
+            if self.filename is None:
+                try:
+                    # On an homepage/catalog, find all thread links 
+                    # and crawl them
+                    thread_links = response.css(
+                        'a[href*="/res/"]::attr(href)'
+                    ).getall()
+                    yield from response.follow_all(
+                        thread_links, callback=self._parse_thread_page
+                    )
+                except Exception as e:
+                    logging.error(
+                        "Error when scraping expected homepage"
+                        f" or catalog: {e}"
+                    )
+            else:
+                # You cannot have a custom filename for every file
+                raise Exception(
+                    "Error: You cannot use a custom filename "
+                    "with a catalog or homepage."
                 )
 
     def _parse_thread_page(self, response):
