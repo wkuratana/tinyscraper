@@ -9,13 +9,6 @@
 
 Tinyscraper is a Python package that is designed to help with scraping post data from imageboards built using Tinyboard (and Tinyboard forks, such as vichan, etc.) for corpus analysis. Tinyscraper aims to be a helpful tool for both people familiar with building web scraping tools, and people who are not familiar/comfortable with working in Python.
 
-<h2 align="left">Feature Implementation Status</h2>  
-
-- [X] Basic Scrapy Spider functionality  
-- [ ] More functional API/CLI
-- [ ] Thread post content formatting
-- [ ] Publish package to PyPi
-
 <h2 align="left">Table of Contents</h2>  
 
 - [Installation](#installation)
@@ -25,21 +18,22 @@ Tinyscraper is a Python package that is designed to help with scraping post data
 
 <h1 align="left">Installation</h1>
 
-Tinyscraper is still under development, and is not yet in a "usable" state. 
+In order to use the Tinyscraper package, please install it from PyPi.
 
-Tinyscraper does, however, still provide a good starting point for any Scrapy projects designed to scrape from Tinyboard sites. 
+> [!TIP]  
+> It is a good idea to install Tinyscraper in a virtual environment!
+> ```bash
+> python3 -m venv venv
+> ```
+> ```bash
+> source venv/bin/activate
+> ```
 
-In order to install the package, please install it from the GitHub repository; in the future, the package will be published to PyPi and installable using `pip install tinyscraper`.
-
-Be sure to use a virtual environment:
+To install the Tinyscraper package from PyPi:  
 ```bash
-python3 -m venv venv
+pip install tinyscraper
 ```
-Then activate the virtual environment:
-```bash
-source venv/bin/activate
-```
-Finally, install the package:
+You can also install the Tinyscraper package from the GitHub repository:
 ```bash
 pip install git+https://github.com/wkuratana/tinyscraper.git
 ```
@@ -47,15 +41,10 @@ pip install git+https://github.com/wkuratana/tinyscraper.git
 <h1 align="left">Usage</h1>
 
 > [!IMPORTANT]  
-> This section will be updated once the API/CLI is fully implemented.
-> These instructions are not currently accurate, but there will be more helpful info when you run the command below.
+> Tinyscraper is designed to be polite and respectful.
+> It does not currently—and will not in the future—facilitate any behavioral modifications that may overload a website or ignore explicit anti-scraping requests.
 
-For the time being, you can scrape a specific thread from a Tinyboard website, and its data will be exported to a JSON file in a local `data/` directory.
 
-After installation, run:
-```bash
-tinyscraper
-```
 
 <h1 align="left">Contributing</h1>
 
