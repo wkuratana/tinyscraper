@@ -2,6 +2,7 @@
 import datetime
 import logging
 import scrapy
+from scrapy.exceptions import UsageError
 from scrapy.loader import ItemLoader
 from ..types import FileExtension
 from ..items import PostItem, ThreadItem
@@ -38,7 +39,15 @@ class TinyboardSpider(scrapy.Spider):
         # A thread page contains a single div with an ID like "thread_12345"
         is_thread_page = response.css('div[id^="thread_"]')
         if is_thread_page:
-            yield from self._parse_thread_page(response)
+            try:
+                yield from self._parse_thread_page(response)
+            except Exception as e:
+                logging.error(
+                    f"Error when scraping expected thread: {e}"
+                )
+                raise Exception(
+                    f"Error when scraping expected thread: {e}"
+                )
         else:
             if self.filename is None:
                 try:
@@ -55,10 +64,18 @@ class TinyboardSpider(scrapy.Spider):
                         "Error when scraping expected homepage"
                         f" or catalog: {e}"
                     )
+                    raise Exception(
+                        "Error when scraping expected homepage"
+                        f" or catalog: {e}"
+                    )
             else:
                 # You cannot have a custom filename for every file
-                raise Exception(
-                    "Error: You cannot use a custom filename "
+                logging.error(
+                    "You cannot use a custom filename "
+                    "with a catalog or homepage."
+                )
+                raise UsageError(
+                    "You cannot use a custom filename "
                     "with a catalog or homepage."
                 )
 
