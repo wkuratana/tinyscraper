@@ -1,6 +1,7 @@
 # Imports
 import typer
 from typing_extensions import Annotated
+from rich.progress import Progress, SpinnerColumn, TextColumn, TimeElapsedColumn
 from .api import scrape_from_url
 from .types import FileExtension
 
@@ -33,13 +34,20 @@ def scrape(
         help="Where output files will be written. Default is local data/.")
     ] = 'data'
 ):
-    scrape_from_url(
-        url, 
-        filename, 
-        filename_suffix, 
-        filename_extension, 
-        directory
-    )
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        TimeElapsedColumn(),
+        transient=True,
+    ) as progress:
+        progress.add_task(description="Scraping...", total=None)
+        scrape_from_url(
+            url, 
+            filename, 
+            filename_suffix, 
+            filename_extension, 
+            directory
+        )
         
 
 if __name__ == '__main__':

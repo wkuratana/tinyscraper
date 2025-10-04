@@ -1,7 +1,7 @@
 [project]
 name = "tinyscraper"
 version = "0.1.0"
-authors = [{ name="Wren C. Kuratana", email="wrenkuratana@gmail.com" }]
+authors = [{ name="Wren C. Kuratana", email="wren@wrenckuratana.com" }]
 description = "A package designed to help with scraping post data from imageboards built using Tinyboard."
 readme = "README.md"
 requires-python = ">=3.13"
