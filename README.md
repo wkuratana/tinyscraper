@@ -44,6 +44,69 @@ pip install git+https://github.com/wkuratana/tinyscraper.git
 > Tinyscraper is designed to be polite and respectful.
 > It does not currently—and will not in the future—facilitate any behavioral modifications that may overload a website or ignore explicit anti-scraping requests.
 
+Tinyscraper's default behavior is as follows:
+
+1. Visit the URL passed as an argument.
+2. If the URL links to a specific thread, then scrape the thread. If the URL links to a homepage or a catalog page, then travel to each thread link on the page and scrape each thread.
+3. Write out each scraped thread to its own JSON file in a local `data/` directory.
+
+You can use optional arguments to change the output file type (JSON, JSONL, CSV, XML) and the output directory. You can also adjust the naming scheme of the output file. **You do not need to tell Tinyscraper if the URL links to a thread, homepage, or catalog page.** Tinyscraper can determine that itself.
+
+Once installed, you can check to see the available arguments at any time using:
+```bash
+tinyscraper --help
+```
+
+<h2 align="left">Simple Scraping</h2>
+
+The simplest command you can run is:
+```bash
+tinyscraper <url>
+```
+(Replace `<url>` with an actual URL).  
+
+You can use any absolute URL that links to a homepage, to a catalog page, or to a specific thread (of a Tinyboard-based imageboard). 
+
+<h2 align="left">Optional Arguments</h2>
+
+Tinyscraper's default file naming convention is `thread_<thread_id>_tinyboard.json`.
+
+To change the filename entirely, use `--filename` or `-fn`:
+```bash
+tinyscraper --filename <name> <url>
+```
+
+> [!NOTE]
+> Do not add the filename extension to any filename you use.
+> See how to change the file type below.
+
+> [!WARNING]
+> You can only use `--filename` or `-fn` if you pass a URL to a specific thread, **not a homepage or catalog page**.
+> See how else you can modify filenames below.
+
+To change the suffix used in the default file naming convention (which is `tinyboard` by default), use `--filename_suffix` or `-fns`:
+```bash
+tinyscraper --filename_suffix <suffix> <url>
+```
+
+To change the output file type, use `--filename_extension` or `-fne`:
+```bash
+tinyscraper --filename_extension <json|jsonl|csv|xml> <url>
+```
+
+To change the output directory, use `--directory` or `-d`:
+```bash
+tinyscraper --directory <path> <url>
+```
+
+<h3 align="left">Example</h3>
+
+```bash
+tinyscraper -fns testchan -fne jsonl -d test_data <url>
+```
+
+The command above visits the URL, then scrapes the thread data into a `test_data/` folder. The output file is named `thread_<thread_id>_testchan.jsonl`
+
 
 
 <h1 align="left">Contributing</h1>

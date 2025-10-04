@@ -23,7 +23,7 @@ class PerItemFilePipeline:
     def open_spider(self, spider: TinyboardSpider):
         self.dir_path = os.path.join(
             spider.directory,
-            spider.scrape_time.strftime('%Y%m%dT%H%M'),
+            spider.scrape_time.strftime('%Y%m%dT%H:%M:%S'),
         )
         os.makedirs(self.dir_path, exist_ok=True)
 
