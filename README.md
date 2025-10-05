@@ -21,7 +21,7 @@ This tool enables anyone with an interest in online sociolinguistics to convenie
 
 <h1 align="left">Installation</h1>
 
-In order to use the Tinyscraper package, please install it from PyPi.
+In order to use the Tinyscraper package, please install it from PyPI.
 
 > [!TIP]  
 > It is a good idea to install Tinyscraper in a virtual environment!
@@ -32,7 +32,7 @@ In order to use the Tinyscraper package, please install it from PyPi.
 > source venv/bin/activate
 > ```
 
-To install the Tinyscraper package from PyPi:  
+To install the Tinyscraper package from PyPI:  
 ```bash
 pip install tinyscraper
 ```
