@@ -10,6 +10,8 @@
 
 Tinyscraper is a Python package that is designed to help with scraping post data from imageboards built using Tinyboard (and Tinyboard forks, such as vichan, etc.) for corpus analysis. Tinyscraper aims to be a helpful tool for both people familiar with building web scraping tools, and people who are not familiar/comfortable with working in Python.
 
+This tool enables anyone with an interest in online sociolinguistics to conveniently gather large datasets (corpora) from imageboards. Such data can be used for various forms of linguistic analysis—such as studying the evolution of slang, tracking the spread of neologisms, or analyzing communication patterns in anonymous online spaces.
+
 <h2 align="left">Table of Contents</h2>  
 
 - [Installation](#installation)
@@ -77,11 +79,11 @@ To change the filename entirely, use `--filename` or `-fn`:
 tinyscraper --filename <name> <url>
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Do not add the filename extension to any filename you use.
 > See how to change the file type below.
 
-> [!WARNING]
+> [!WARNING]  
 > You can only use `--filename` or `-fn` if you pass a URL to a specific thread, **not a homepage or catalog page**.
 > See how else you can modify filenames below.
 
@@ -113,6 +115,69 @@ The command above visits the URL, then scrapes the thread data into a `test_data
 Tinyscraper is designed to be used through both its CLI and its API. You can also install and use Tinyscraper as a dependency for other projects. Please reference the docstrings in `api.py` if you would like to use Tinyscraper without its CLI.
 
 Tinyscraper is built leveraging Scrapy. It can be easily modified if you find that it would better suit your use case with different functionality.
+
+<h2 align="left">Example Output (JSON)</h2>
+
+Below is an anonymized example output; the example output is what a JSON file for a thread would look like.
+
+```
+[
+{
+    "thread_id": [
+        "000001"
+    ],
+    "board": [
+        "example"
+    ],
+    "title": [
+        "Example Output"
+    ],
+    "posts": [
+        {
+            "is_op": [
+                true
+            ],
+            "post_id": [
+                "000001"
+            ],
+            "author": [
+                "Anonymous"
+            ],
+            "timestamp": [
+                "2025-10-01T00:00:00Z"
+            ],
+            "content": [
+                "<div class=\"body\">Example text</div>"
+            ],
+            "image_url": [
+                "<Example>"
+            ]
+        },
+        {
+            "is_op": [
+                false
+            ],
+            "post_id": [
+                "000002"
+            ],
+            "author": [
+                "Anonymous"
+            ],
+            "timestamp": [
+                "2025-10-01T00:00:01Z"
+            ],
+            "content": [
+                "<div class=\"body\">Example reply</div>"
+            ]
+        }
+    ]
+}
+]
+```
+
+> [!NOTE]  
+> Post content is scraped to include its HTML formatting. 
+> This is so site-specific metalinguistic features (such as bolding, etc.) can be preserved and used in any analyses.
 
 <h1 align="left">Contributing</h1>
 
